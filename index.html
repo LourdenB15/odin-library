@@ -1,42 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="javascript.js" defer></script>
-  </head>
-  <body>
-    <nav>
-      <h1>Library</h1>
-    </nav>
-    <div id="shelf">
-      <div class="box">
-        <p>Title</p>
-        <p>Harry Potter and The Philosopher's Stone </p>
-        <p>Author</p>
-        <p>John Ronald Reuel Tolkien</p>
-        <div>
-          <button class="status read">Read</button>
-          <button class="delete">Delete</burron>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="javascript.js" defer></script>
+</head>
+
+<body>
+  <nav>
+    <h1>Library</h1>
+  </nav>
+  <div id="shelf">
+    <div class="box">
+      <p>Title</p>
+      <p>Harry Potter and The Philosopher's Stone </p>
+      <p>Author</p>
+      <p>John Ronald Reuel Tolkien</p>
+      <div>
+        <button class="status read">Read</button>
+        <button class="delete">Delete</burron>
       </div>
-      <div class="box">
-        <p>Title</p>
-        <p>Harry Potter</p>
-        <p>Author</p>
-        <p>John Ronald Reuel Tolkien</p>
-        <div>
-          <button class="status not-read">Not<br>Read</button>
-          <button class="delete">Delete</button>
-        </div>
-      </div>
-      
     </div>
-    <div class="add-form">asd</div>
-    <button class="circle">+</button>
-  </body>
+    <div class="box">
+      <p>Title</p>
+      <p>Harry Potter</p>
+      <p>Author</p>
+      <p>John Ronald Reuel Tolkien</p>
+      <div>
+        <button class="status not-read">Read</button>
+        <button class="delete">Delete</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="overlay-toggle form-wrapper">
+  </div>
+  <div class="overlay-toggle form">
+    <form action="">
+      <p>Book</p>
+      <input type="text" id="title" autocomplete="off" required>
+      <label for="title">Title</label>
+      <input type="text" id="author" autocomplete="off" required>
+      <label for="author">Author</label>
+      <button class="status read" type="button">Read</button>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
+  <button class="overlay-toggle circle">+</button>
+</body>
+
 </html>

@@ -93,6 +93,7 @@ body > #shelf {
   grid-template-columns: 1fr auto;
   align-items: center;
 }
+
 .box button {
   width: 50px;
   justify-self: end;
@@ -108,13 +109,17 @@ body > #shelf {
   font-size: 16px;
 }
 
+div > button:first-child {
+  margin-right: max(3vw, 22px);
+  border: none;
+}
 .status {
   appearance: none;
-  border: none;
+
   color: rgb(74, 212, 74);
   background-color: var(--secondary-color);
-  margin-right: max(3vw, 22px);
   cursor: pointer;
+
   transition: all 0.2s ease;
 }
 
@@ -194,11 +199,114 @@ body > #shelf {
 }
 /* <-------------- */
 
-/* .add-form {
+/* form
+-----------------> */
+
+.form-wrapper {
+  opacity: 0.5;
   background-color: gray;
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
+  z-index: 500;
   top: 0;
   right: 0;
-} */
+  display: flex;
+}
+
+.form-wrapper,
+.form {
+  scale: 0;
+  transition: none;
+}
+
+.pop-up {
+  scale: 1;
+  transition: all 0.4s ease;
+}
+
+.form {
+  background-color: var(--secondary-color);
+  padding: 20px 30px 70px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+form {
+  display: grid;
+  text-align: center;
+  font-family: 'Tajawal', sans-serif;
+  color: var(--text-color);
+  grid-template-rows: repeat(5, auto) 50px 76px;
+}
+
+form p:first-child {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+label {
+  margin-bottom: 20px;
+}
+
+[type='button'] {
+  border-radius: 0.4em;
+  background-color: inherit;
+  border: none;
+  height: 40px;
+  justify-self: center;
+  margin-top: 20px;
+}
+form p {
+  font-size: 15px;
+  margin: 0;
+}
+
+[type='text']:focus {
+  border: 2px solid black;
+}
+[type='text'] {
+  border-radius: 0.5em;
+  height: 40px;
+  width: 300px;
+  border: none;
+  outline: yellow;
+  font-size: medium;
+  font-family: inherit;
+  font-weight: 500;
+  padding: 0 10px;
+}
+
+[type='submit'] {
+  appearance: none;
+  padding: 7px 25px;
+  border: 1px solid var(--accent-color);
+  border-radius: 0.4em;
+  background-color: inherit;
+  margin-top: 30px;
+  height: 30px;
+  color: var(--accent-color);
+  justify-self: center;
+  transition: all 0.4s;
+  cursor: pointer;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+}
+[type='submit']:hover {
+  border: 1px solid var(--accent-clicked);
+  background-color: var(--accent-clicked);
+  color: var(--primary-color);
+}
+
+[type='submit']:active {
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  transition: none;
+  color: var(--secondary-color);
+  scale: 0.95;
+}
+/* <----------------- */
