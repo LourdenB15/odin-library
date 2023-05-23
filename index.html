@@ -16,42 +16,20 @@
     <h1>Library</h1>
   </nav>
   <div id="shelf">
-    <div class="box">
-      <p>Title</p>
-      <p>Harry Potter and The Philosopher's Stone </p>
-      <p>Author</p>
-      <p>John Ronald Reuel Tolkien</p>
-      <div>
-        <button class="status read">Read</button>
-        <button class="delete">Delete</burron>
-      </div>
-    </div>
-    <div class="box">
-      <p>Title</p>
-      <p>Harry Potter</p>
-      <p>Author</p>
-      <p>John Ronald Reuel Tolkien</p>
-      <div>
-        <button class="status not-read">Read</button>
-        <button class="delete">Delete</button>
-      </div>
-    </div>
-
   </div>
   <div class="overlay-toggle form-wrapper">
   </div>
   <div class="overlay-toggle form">
     <form action="">
       <p>Book</p>
-      <input type="text" id="title" autocomplete="off" required>
+      <input type="text" class="info" id="title" autocomplete="off">
       <label for="title">Title</label>
-      <input type="text" id="author" autocomplete="off" required>
+      <input type="text" class="info" id="author" autocomplete="off">
       <label for="author">Author</label>
-      <button class="status read" type="button">Read</button>
-      <button type="submit">Add</button>
+      <button class="status  info" id="status" value=1 type="button">Read</button>
+      <button type="submit" class="overlay-toggle submit">Add</button>
     </form>
   </div>
-
   <button class="overlay-toggle circle">+</button>
 </body>
 

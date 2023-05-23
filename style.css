@@ -115,33 +115,27 @@ div > button:first-child {
 }
 .status {
   appearance: none;
-
-  color: rgb(74, 212, 74);
   background-color: var(--secondary-color);
   cursor: pointer;
-
   transition: all 0.2s ease;
-}
-
-.not-read {
-  color: rgb(207, 25, 25);
-}
-
-.not-read:hover {
-  color: rgb(228, 65, 65);
-}
-
-.read {
   color: rgb(74, 212, 74);
 }
-.read:hover {
+
+.status:hover {
   color: rgb(131, 241, 131);
 }
-.read:active,
+
+.status:active,
 .not-read:active {
   color: rgba(255, 217, 0, 0.473);
   scale: 0.95;
   transition: none;
+}
+.not-read {
+  color: rgb(207, 25, 25);
+}
+.not-read:hover {
+  color: rgb(228, 65, 65);
 }
 
 .delete {
