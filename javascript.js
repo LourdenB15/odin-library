@@ -1,18 +1,35 @@
-function Book(title, author, readOrNot) {
-  this.title = title;
-  this.author = author;
-  this['read or not'] = readOrNot ? 'already read' : 'not read yet';
-}
-Book.prototype.textTitle = 'Title';
-Book.prototype.textAuthor = 'Author';
-
 const input = document.querySelectorAll('.info');
 const submit = document.querySelector('[type="submit"]');
 const status = document.querySelector('#status');
-
 const shelf = document.querySelector('#shelf');
 
-function createBox(x) {
+function Book(title, author, read) {
+  this.title = title;
+  this.author = author;
+  this.read = read !== '0';
+  this.index = 0;
+}
+
+const myLibrary = [];
+
+function addBookToLibrary() {
+  const [title, author, read] = Array.from(input);
+  const newBook = new Book(title.value, author.value, read.value);
+  newBook.index = myLibrary.length;
+  myLibrary.push(newBook);
+  return newBook;
+}
+
+submit.addEventListener('click', (e) => {
+  e.preventDefault();
+  addBookToLibrary();
+  shelf.innerHTML = '';
+  for (let i = 0; i < myLibrary.length; i++) {
+    createBox(myLibrary[i]);
+  }
+});
+
+function createBox(book) {
   const box = document.createElement('div');
   box.classList.add('box');
   for (let i = 1; i <= 4; i++) {
@@ -20,16 +37,16 @@ function createBox(x) {
     let paraText;
     switch (i) {
       case 1:
-        paraText = x.textTitle;
+        paraText = 'Title';
         break;
       case 2:
-        paraText = x.title;
+        paraText = book.title;
         break;
       case 3:
-        paraText = x.textAuthor;
+        paraText = 'Author';
         break;
       case 4:
-        paraText = x.author;
+        paraText = book.author;
         break;
       default:
         return;
@@ -43,7 +60,7 @@ function createBox(x) {
     const btn = document.createElement('button');
     switch (i) {
       case 1:
-        if (status.value === '1') paraText = 'Read';
+        if (book.read) paraText = 'Read';
         else {
           paraText = 'Not<br>Read';
           btn.classList.add('not-read');
@@ -53,14 +70,20 @@ function createBox(x) {
           btn.classList.toggle('not-read');
           if (btn.innerHTML === 'Not<br>Read') btn.innerHTML = 'Read';
           else btn.innerHTML = 'Not<br>Read';
+          if (!book.read) book.read = true;
+          else book.read = false;
         });
-
         break;
       case 2:
         paraText = 'Delete';
         btn.classList.add('delete');
         btn.addEventListener('click', () => {
-          box.remove();
+          myLibrary.splice(book.index, 1);
+          shelf.innerHTML = '';
+          for (let i = 0; i < myLibrary.length; i++) {
+            createBox(myLibrary[i]);
+            myLibrary[i].index = i;
+          }
         });
         break;
       default:
@@ -72,13 +95,7 @@ function createBox(x) {
   box.appendChild(btnDiv);
   shelf.appendChild(box);
 }
-function overlayToggle() {
-  overlay.forEach((e) => {
-    if (!e.classList.contains('circle')) {
-      e.classList.toggle('pop-up');
-    }
-  });
-}
+
 function changeColor(e) {
   if (status.value === '1') {
     e.classList.remove('not-read');
@@ -98,16 +115,17 @@ function changeStatus() {
     changeColor(this);
   }
 }
-submit.addEventListener('click', (e) => {
-  e.preventDefault();
-  const [title, author, bookStatus] = Array.from(input);
-  const newBook = new Book(title.value, author.value, bookStatus.value);
-  createBox(newBook);
-});
+
 status.addEventListener('click', changeStatus);
 
 const overlay = document.querySelectorAll('.overlay-toggle');
-
+function overlayToggle() {
+  overlay.forEach((e) => {
+    if (!e.classList.contains('circle')) {
+      e.classList.toggle('pop-up');
+    }
+  });
+}
 overlay.forEach((e) => {
   if (!e.classList.contains('form')) {
     e.addEventListener('click', overlayToggle);
