@@ -17,6 +17,11 @@ function addBookToLibrary() {
   const newBook = new Book(title.value, author.value, read.value);
   newBook.index = myLibrary.length;
   myLibrary.push(newBook);
+  title.value = '';
+  author.value = '';
+  read.value = '';
+  status.value = '0';
+  changeStatus(status);
   return newBook;
 }
 
@@ -106,17 +111,19 @@ function changeColor(e) {
   }
 }
 
-function changeStatus() {
+function changeStatus(e) {
   if (status.value === '0') {
     status.value = 1;
-    changeColor(this);
+    changeColor(e);
   } else {
     status.value = 0;
-    changeColor(this);
+    changeColor(e);
   }
 }
 
-status.addEventListener('click', changeStatus);
+status.addEventListener('click', () => {
+  changeStatus(status);
+});
 
 const overlay = document.querySelectorAll('.overlay-toggle');
 function overlayToggle() {
